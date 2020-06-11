@@ -10,40 +10,82 @@ import UIKit
 
 class MessageCell: UICollectionViewCell {
     
-    var isPlayer: Bool = false {
+    var isTheSamePlayer: Bool = false {
         didSet {
-            if isPlayer {
-                receiverBox.isHidden = true
-                setLabel(in: senderBox)
-            } else {
-                senderBox.isHidden = true
-                setLabel(in: receiverBox)
+            if isTheSamePlayer {
+                self.top = self.topAnchor
+                self.avatarView.isHidden = true
             }
         }
     }
-    var senderBox: UIView = {
+    private lazy var top: NSLayoutYAxisAnchor? = nil
+    private var senderBox: UIView = {
         let box = UIView()
         box.backgroundColor = .senderBoxColor
         return box
     }()
-    var receiverBox: UIView = {
+    private var receiverBox: UIView = {
         let box = UIView()
         box.backgroundColor = .receiverBoxColor
         return box
     }()
-    var label: UILabel = {
+    var textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.font = UIFont(name: "Helvetica", size: 16)
         label.textColor = .white
-        label.sizeToFit()
         return label
     }()
+    var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Heavy", size: 12)
+        label.textColor = .white
+        label.numberOfLines = 1
+        return label
+    }()
+    var avatarView: UIImageView = {
+        let imageView = UIImageView()
+        let size: CGFloat = 26
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .white
+        imageView.setSize(width: size, height: size)
+        imageView.configureRoundedCorners(for: [.all], withRadius: size/2)
+        return imageView
+    }()
+    var isPlayer: Bool = false {
+        didSet {
+            if isPlayer {
+                self.addSubview(senderBox)
+                senderBox.setAnchor(top: self.topAnchor, right: self.rightAnchor, bottom: self.bottomAnchor, left: self.leftAnchor, paddingRight: 10, paddingLeft: 80)
+                senderBox.configureRoundedCorners(for: [.all], withRadius: 12)
+                setLabel(in: senderBox)
+            } else {
+                self.addSubview(avatarView)
+                avatarView.setAnchor(left: self.leftAnchor, paddingLeft: 8)
+ 
+                if self.top == nil {
+                    self.addSubview(nameLabel)
+                    nameLabel.setAnchor(top: self.topAnchor, right: self.rightAnchor, left: avatarView.rightAnchor, paddingRight: 80, paddingLeft: 12)
+                    nameLabel.isHidden = false
+                    self.top = nameLabel.bottomAnchor
+                }
+
+                self.addSubview(receiverBox)
+                receiverBox.setAnchor(top: top!, right: self.rightAnchor, bottom: self.bottomAnchor, left: avatarView.rightAnchor, paddingRight: 80, paddingLeft: 10)
+                receiverBox.configureRoundedCorners(for: [.all], withRadius: 12)
+                setLabel(in: receiverBox)
+                
+                avatarView.setCenterYAnchor(in: receiverBox)
+            }
+        }
+    }
+
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
+
     }
     
     required init?(coder: NSCoder) {
@@ -51,20 +93,9 @@ class MessageCell: UICollectionViewCell {
     }
     
     // MARK: - Helper
-    private func configureUI() {
-        self.addSubview(senderBox)
-        senderBox.setAnchor(top: self.topAnchor, right: self.rightAnchor, bottom: self.bottomAnchor, left: self.leftAnchor, paddingTop: 0, paddingRight: 10, paddingBottom: 0, paddingLeft: 50)
-        senderBox.configureRoundedCorners(for: [.all], withRadius: 12)
-        
-        self.addSubview(receiverBox)
-        receiverBox.setAnchor(top: self.topAnchor, right: self.rightAnchor, bottom: self.bottomAnchor, left: self.leftAnchor, paddingTop: 0, paddingRight: 50, paddingBottom: 0, paddingLeft: 10)
-        receiverBox.configureRoundedCorners(for: [.all], withRadius: 12)
-        
-    }
-    
     func setLabel(in view: UIView) {
-        view.addSubview(label)
-        label.setAnchor(top: view.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingRight: 10, paddingBottom: 10, paddingLeft: 10)
+        view.addSubview(textLabel)
+        textLabel.setAnchor(top: view.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingRight: 10, paddingBottom: 10, paddingLeft: 10)
     }
     
 }

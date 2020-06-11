@@ -11,6 +11,7 @@ import UIKit
 extension UIColor {
     static let receiverBoxColor = #colorLiteral(red: 0.6350682378, green: 0.6351773739, blue: 0.6350538731, alpha: 1)
     static let senderBoxColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
+    static let bgColor = #colorLiteral(red: 0.119528152, green: 0.1204516068, blue: 0.1263914108, alpha: 1)
 }
 
 extension UIViewController {
@@ -26,7 +27,7 @@ extension UIViewController {
     }
     
     func heightForLabel(withText text:String) -> CGFloat{
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 60, height: CGFloat.zero))
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 140, height: CGFloat.zero))
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.font = UIFont(name: "Helvetica", size: 16)

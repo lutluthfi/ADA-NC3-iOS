@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct K {
+    struct CollectionView {
+        static let messageCellIdentifier = "messageCell"
+    }
+}

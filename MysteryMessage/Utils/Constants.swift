@@ -12,4 +12,9 @@ struct K {
     struct CollectionView {
         static let messageCellIdentifier = "messageCell"
     }
+    
+    struct StoryModel {
+        static let optionTitle = "title"
+        static let direction = "direction"
+    }
 }

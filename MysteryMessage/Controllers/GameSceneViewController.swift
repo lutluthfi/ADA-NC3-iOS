@@ -29,11 +29,21 @@ class GameSceneViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     // MARK: - Helper
     private func configureUI() {
         self.hideNavbar()
         view.backgroundColor = .bgColor
-        self.navigationController?.navigationBar.barStyle = .black
         configureOptionsView()
         configureMessageCV()
     }
@@ -56,7 +66,7 @@ class GameSceneViewController: UIViewController {
         messageCollectionView.dataSource = self
         
         view.addSubview(messageCollectionView)
-        messageCollectionView.setAnchor(top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: userOptionsView.topAnchor, left: view.leftAnchor, paddingTop: 45, paddingBottom: 30)
+        messageCollectionView.setAnchor(top: view.topAnchor, right: view.rightAnchor, bottom: userOptionsView.topAnchor, left: view.leftAnchor, paddingTop: 45, paddingBottom: 30)
     }
     
     private func configureOptionCells() {

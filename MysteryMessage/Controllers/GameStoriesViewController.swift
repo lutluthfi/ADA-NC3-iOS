@@ -54,7 +54,7 @@ class GameStoriesViewController: UIViewController {
     }
     
     private func setupViewWillAppear() {
-        self.navigationItem.title = "Stories"
+        self.navigationItem.title = "Mystery Stories"
         self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil

@@ -12,6 +12,7 @@ extension UIColor {
     static let receiverBoxColor = #colorLiteral(red: 0.6350682378, green: 0.6351773739, blue: 0.6350538731, alpha: 1)
     static let senderBoxColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
     static let bgColor = #colorLiteral(red: 0.119528152, green: 0.1204516068, blue: 0.1263914108, alpha: 1)
+    static let optionViewBgColor = #colorLiteral(red: 0.8290143013, green: 0.8291541934, blue: 0.8289958835, alpha: 1)
 }
 
 extension UIViewController {

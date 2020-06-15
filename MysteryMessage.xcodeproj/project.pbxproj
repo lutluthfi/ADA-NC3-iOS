@@ -15,6 +15,11 @@
 		4F59C97624978520004C5FC3 /* GameStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F59C97524978520004C5FC3 /* GameStoriesViewController.swift */; };
 		4F59C978249785A5004C5FC3 /* GameStoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F59C977249785A5004C5FC3 /* GameStoriesCollectionViewCell.swift */; };
 		4F59C97A24978ABC004C5FC3 /* GameStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F59C97924978ABC004C5FC3 /* GameStory.swift */; };
+		FF2EBBEC24932C8500B89189 /* MessageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBEB24932C8500B89189 /* MessageCollectionView.swift */; };
+		FF2EBBEE2493CA4C00B89189 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBED2493CA4C00B89189 /* GameManager.swift */; };
+		FF2EBBF12493CFA100B89189 /* OptionsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBF02493CFA100B89189 /* OptionsStackView.swift */; };
+		FF2EBBF32493D55D00B89189 /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBF22493D55D00B89189 /* OptionButton.swift */; };
+		FFBC34B82497841E009091E8 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC34B72497841E009091E8 /* StoryModel.swift */; };
 		FFE40E0524922748006F1C64 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40E0424922748006F1C64 /* Extensions.swift */; };
 		FFE40E072492276E006F1C64 /* GameSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40E062492276E006F1C64 /* GameSceneViewController.swift */; };
 		FFE40E092492279D006F1C64 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40E082492279D006F1C64 /* MessageCell.swift */; };
@@ -32,6 +37,11 @@
 		4F59C97524978520004C5FC3 /* GameStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStoriesViewController.swift; sourceTree = "<group>"; };
 		4F59C977249785A5004C5FC3 /* GameStoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F59C97924978ABC004C5FC3 /* GameStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameStory.swift; path = "MysteryMessage/Views/Collection Views/GameStory.swift"; sourceTree = SOURCE_ROOT; };
+		FF2EBBEB24932C8500B89189 /* MessageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionView.swift; sourceTree = "<group>"; };
+		FF2EBBED2493CA4C00B89189 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		FF2EBBF02493CFA100B89189 /* OptionsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsStackView.swift; sourceTree = "<group>"; };
+		FF2EBBF22493D55D00B89189 /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
+		FFBC34B72497841E009091E8 /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		FFE40E0424922748006F1C64 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FFE40E062492276E006F1C64 /* GameSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneViewController.swift; sourceTree = "<group>"; };
 		FFE40E082492279D006F1C64 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -81,6 +91,15 @@
 			path = MysteryMessage;
 			sourceTree = "<group>";
 		};
+		FF2EBBEF2493CF7E00B89189 /* Option Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF2EBBF02493CFA100B89189 /* OptionsStackView.swift */,
+				FF2EBBF22493D55D00B89189 /* OptionButton.swift */,
+			);
+			path = "Option Views";
+			sourceTree = "<group>";
+		};
 		FFE40E0024922716006F1C64 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				4F59C97924978ABC004C5FC3 /* GameStory.swift */,
+				FF2EBBED2493CA4C00B89189 /* GameManager.swift */,
+				FFBC34B72497841E009091E8 /* StoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,6 +131,7 @@
 		FFE40E032492271C006F1C64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF2EBBEF2493CF7E00B89189 /* Option Views */,
 				FFE40E0E24922F3A006F1C64 /* Collection Views */,
 				4F59C93124921DAB004C5FC3 /* Main.storyboard */,
 			);
@@ -121,6 +143,7 @@
 			children = (
 				FFE40E082492279D006F1C64 /* MessageCell.swift */,
 				4F59C977249785A5004C5FC3 /* GameStoriesCollectionViewCell.swift */,
+				FF2EBBEB24932C8500B89189 /* MessageCollectionView.swift */,
 			);
 			path = "Collection Views";
 			sourceTree = "<group>";
@@ -197,14 +220,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F59C978249785A5004C5FC3 /* GameStoriesCollectionViewCell.swift in Sources */,
+				FF2EBBF32493D55D00B89189 /* OptionButton.swift in Sources */,
 				4F59C92C24921DAB004C5FC3 /* AppDelegate.swift in Sources */,
 				FFE40E092492279D006F1C64 /* MessageCell.swift in Sources */,
 				4F59C97A24978ABC004C5FC3 /* GameStory.swift in Sources */,
 				FFE40E0524922748006F1C64 /* Extensions.swift in Sources */,
+				FF2EBBEC24932C8500B89189 /* MessageCollectionView.swift in Sources */,
 				4F59C92E24921DAB004C5FC3 /* SceneDelegate.swift in Sources */,
+				FF2EBBF12493CFA100B89189 /* OptionsStackView.swift in Sources */,
 				FFE40E072492276E006F1C64 /* GameSceneViewController.swift in Sources */,
 				4F59C97624978520004C5FC3 /* GameStoriesViewController.swift in Sources */,
 				FFE40E0B249227E0006F1C64 /* Constants.swift in Sources */,
+				FFBC34B82497841E009091E8 /* StoryModel.swift in Sources */,
+				FF2EBBEE2493CA4C00B89189 /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

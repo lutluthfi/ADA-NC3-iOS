@@ -12,6 +12,7 @@ class GameStoriesViewController: UIViewController {
 
     lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.estimatedItemSize = .zero
         collectionViewLayout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,13 +50,14 @@ class GameStoriesViewController: UIViewController {
     }
     
     private func setupViewDidLoad() {
-        self.implementCompontentView()
+        self.implementComponentView()
     }
     
     private func setupViewWillAppear() {
         self.navigationItem.title = "Stories"
         self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
@@ -63,7 +65,7 @@ class GameStoriesViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    private func implementCompontentView() {
+    private func implementComponentView() {
         self.view.layoutIfNeeded()
         self.view.addSubview(self.collectionView)
         NSLayoutConstraint.activate([
@@ -82,12 +84,13 @@ extension GameStoriesViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return .zero
+        return 24
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width
-        let height = GameStoriesCollectionViewCell.height
+        let horizontalMargin = CGFloat(16)
+        let width = collectionView.frame.width - (horizontalMargin * 2)
+        let height = 1.1 * width
         return .init(width: width, height: height)
     }
     
@@ -114,4 +117,20 @@ extension GameStoriesViewController: UICollectionViewDataSource, UICollectionVie
         }
         self.lastContentOffset = collectionView.contentOffset.y
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let destinationViewController = PrefixGameSceneViewController()
+        destinationViewController.delegate = self
+        self.present(destinationViewController, animated: true)
+    }
+    
+}
+
+extension GameStoriesViewController: PrefixGameSceneViewControllerDelegate {
+    
+    func prefixGameScene(_ viewController: PrefixGameSceneViewController, didPlay new: Bool) {
+        let destinationViewController = GameSceneViewController()
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+    }
+    
 }

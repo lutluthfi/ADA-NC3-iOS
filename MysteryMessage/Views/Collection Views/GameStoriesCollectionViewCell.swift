@@ -10,11 +10,12 @@ import UIKit
 
 public class GameStoriesCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: GameStoriesCollectionViewCell.self)
-    static let height = CGFloat(264)
     
     lazy var posterImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .lightGray
         return imageView
     }()
@@ -27,7 +28,7 @@ public class GameStoriesCollectionViewCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.font = .systemFont(ofSize: 28, weight: .bold)
         label.textColor = .white
         return label
     }()
@@ -42,6 +43,7 @@ public class GameStoriesCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.implementComponentView()
+        self.setupComponentView()
     }
     
     required init?(coder: NSCoder) {
@@ -52,6 +54,12 @@ public class GameStoriesCollectionViewCell: UICollectionViewCell {
         self.titleLabel.text = gameStory.title
         self.descriptionLabel.text = gameStory.description
         self.posterImageView.image = gameStory.poster
+    }
+    
+    private func setupComponentView() {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 8
+        self.layoutIfNeeded()
     }
     
     private func implementComponentView() {
@@ -69,12 +77,13 @@ public class GameStoriesCollectionViewCell: UICollectionViewCell {
             self.informationContainerVisualEffectView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.informationContainerVisualEffectView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.informationContainerVisualEffectView.leadingAnchor, constant: 16),
-            self.titleLabel.topAnchor.constraint(equalTo: self.informationContainerVisualEffectView.topAnchor, constant: 16),
+            self.titleLabel.topAnchor.constraint(equalTo: self.informationContainerVisualEffectView.topAnchor, constant: 8),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.informationContainerVisualEffectView.trailingAnchor, constant: -16),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.descriptionLabel.topAnchor, constant: -8),
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.descriptionLabel.topAnchor, constant: -4),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.informationContainerVisualEffectView.leadingAnchor, constant: 16),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.informationContainerVisualEffectView.trailingAnchor, constant: -16),
             self.descriptionLabel.bottomAnchor.constraint(equalTo: self.informationContainerVisualEffectView.bottomAnchor, constant: -16)
         ])
+        self.contentView.layoutIfNeeded()
     }
 }

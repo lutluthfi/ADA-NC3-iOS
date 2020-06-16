@@ -16,6 +16,7 @@ class GameSceneViewController: UIViewController {
     private var gameStory = [StoryModel]() {
         willSet {
             if newValue.count > gameStory.count  {
+                print("DEBUG : \(newValue)")
                 autoUpdateNextStory(for: newValue.last!)
             }
         }
@@ -44,9 +45,8 @@ class GameSceneViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -94,8 +94,8 @@ class GameSceneViewController: UIViewController {
     }
     
     private func autoUpdateNextStory(for story: StoryModel) {
-        if !gameStory.isEmpty, let nextStory = gm.updateNextStory(from: story){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+        if let nextStory = gm.updateNextStory(from: story){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.gameStory.append(nextStory)
                 self.configureOptions()
                 self.messageCollectionView.reloadData()
@@ -114,14 +114,13 @@ class GameSceneViewController: UIViewController {
     
     private func configureNavbar() {
         navigationItem.titleView = titleView
-    
-        let topLeftButton = UIBarButtonItem(title: "Exit", style: .plain, target: self, action: #selector(topLeftButtonHandler))
+        let topLeftButton = UIBarButtonItem(title: "End", style: .plain, target: self, action: #selector(topLeftButtonHandler))
         navigationItem.setLeftBarButton(topLeftButton, animated: true)
     }
     
     // MARK: - Targets
     @objc private func topLeftButtonHandler() {
-        print("DEBUG : EXIT")
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
 }

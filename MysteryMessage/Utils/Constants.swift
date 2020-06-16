@@ -17,4 +17,11 @@ struct K {
         static let optionTitle = "title"
         static let direction = "direction"
     }
+    
+    struct PlayerName {
+        static let D = "Octa"
+        static let A = "Ben"
+        static let B = "Vero"
+        static let C = "George"
+    }
 }

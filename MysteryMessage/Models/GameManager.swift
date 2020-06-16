@@ -11,12 +11,10 @@ import Foundation
 struct GameManager {
     
     private let story: [StoryModel] = [
-        StoryModel(title: "iusmod tempor incididuntolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", player: "Octa", isPlayer: false, options: [
-            StoryOption(title: "Option 1", direction: 1),
-        ] ),
-        StoryModel(title: "Lorem usmod tempor incididunt ut labore et dolore magna aliqua. p ex ea commodo consequat.", player: "User", isPlayer: true, next: 2),
-        StoryModel(title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", player: "Octa", isPlayer: false, next: 3),
-        StoryModel(title: "Lorem ipsum dout aliquip ex ea commodo consequat.", player: "Ben", isPlayer: false, next: 4),
+        StoryModel(title: "Hey, did you see anyone taking out my cookies from the fridge? I left it there yesterday, and now it’s gone.", player: K.PlayerName.D, isPlayer: false, next: 1),
+        StoryModel(title: "To tell you the truth, it’s not just my cookies, but also some sandwiches and cakes.", player: K.PlayerName.D, isPlayer: false, next: 2),
+        StoryModel(title: "Hey, you’re smart right? I’ve seen your grades, can you help us find out who took our food? I don’t like feeling like I can’t safely use the fridge anymore. I would hate working these long hours without some snacks for my breaks.", player: K.PlayerName.D, isPlayer: false, next: 3),
+        StoryModel(title: "Oh, and find my cookies, too, if it’s still out there somewhere.", player: K.PlayerName.D, isPlayer: false, next: 4),
         StoryModel(title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do liquip ex ea commodo consequat.", player: "Ben", isPlayer: false, options: [
             StoryOption(title: "Option 1", direction: 5),
             StoryOption(title: "Option 2", direction: 6),

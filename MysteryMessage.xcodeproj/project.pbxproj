@@ -14,13 +14,13 @@
 		4F59C93824921DAC004C5FC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F59C93624921DAC004C5FC3 /* LaunchScreen.storyboard */; };
 		FF2EBBEC24932C8500B89189 /* MessageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBEB24932C8500B89189 /* MessageCollectionView.swift */; };
 		FF2EBBEE2493CA4C00B89189 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBED2493CA4C00B89189 /* GameManager.swift */; };
-		FF2EBBF12493CFA100B89189 /* OptionsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBF02493CFA100B89189 /* OptionsStackView.swift */; };
 		FF2EBBF32493D55D00B89189 /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBF22493D55D00B89189 /* OptionButton.swift */; };
 		FFBC34B82497841E009091E8 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC34B72497841E009091E8 /* StoryModel.swift */; };
 		FFE40E0524922748006F1C64 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40E0424922748006F1C64 /* Extensions.swift */; };
 		FFE40E072492276E006F1C64 /* GameSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40E062492276E006F1C64 /* GameSceneViewController.swift */; };
 		FFE40E092492279D006F1C64 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40E082492279D006F1C64 /* MessageCell.swift */; };
 		FFE40E0B249227E0006F1C64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE40E0A249227E0006F1C64 /* Constants.swift */; };
+		FFE769682497D8B200E9F766 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE769672497D8B200E9F766 /* OptionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,13 +33,13 @@
 		4F59C93924921DAC004C5FC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF2EBBEB24932C8500B89189 /* MessageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionView.swift; sourceTree = "<group>"; };
 		FF2EBBED2493CA4C00B89189 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
-		FF2EBBF02493CFA100B89189 /* OptionsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsStackView.swift; sourceTree = "<group>"; };
 		FF2EBBF22493D55D00B89189 /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
 		FFBC34B72497841E009091E8 /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		FFE40E0424922748006F1C64 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FFE40E062492276E006F1C64 /* GameSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneViewController.swift; sourceTree = "<group>"; };
 		FFE40E082492279D006F1C64 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FFE40E0A249227E0006F1C64 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FFE769672497D8B200E9F766 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +88,8 @@
 		FF2EBBEF2493CF7E00B89189 /* Option Views */ = {
 			isa = PBXGroup;
 			children = (
-				FF2EBBF02493CFA100B89189 /* OptionsStackView.swift */,
 				FF2EBBF22493D55D00B89189 /* OptionButton.swift */,
+				FFE769672497D8B200E9F766 /* OptionsView.swift */,
 			);
 			path = "Option Views";
 			sourceTree = "<group>";
@@ -213,10 +213,10 @@
 				FF2EBBF32493D55D00B89189 /* OptionButton.swift in Sources */,
 				4F59C92C24921DAB004C5FC3 /* AppDelegate.swift in Sources */,
 				FFE40E092492279D006F1C64 /* MessageCell.swift in Sources */,
+				FFE769682497D8B200E9F766 /* OptionsView.swift in Sources */,
 				FFE40E0524922748006F1C64 /* Extensions.swift in Sources */,
 				FF2EBBEC24932C8500B89189 /* MessageCollectionView.swift in Sources */,
 				4F59C92E24921DAB004C5FC3 /* SceneDelegate.swift in Sources */,
-				FF2EBBF12493CFA100B89189 /* OptionsStackView.swift in Sources */,
 				FFE40E072492276E006F1C64 /* GameSceneViewController.swift in Sources */,
 				FFE40E0B249227E0006F1C64 /* Constants.swift in Sources */,
 				FFBC34B82497841E009091E8 /* StoryModel.swift in Sources */,

@@ -19,6 +19,8 @@
 		4F59C97E2497DB44004C5FC3 /* VideoSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F59C97D2497DB44004C5FC3 /* VideoSplashViewController.swift */; };
 		4F59C9802497DB63004C5FC3 /* VideoCutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F59C97F2497DB63004C5FC3 /* VideoCutter.swift */; };
 		4F59C9822497DE6E004C5FC3 /* MysteryHackGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4F59C9812497DE6E004C5FC3 /* MysteryHackGif.gif */; };
+		4F59C9842498BF51004C5FC3 /* Nervous Piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F59C9832498BF51004C5FC3 /* Nervous Piano.mp3 */; };
+		4F59C9862498C296004C5FC3 /* Decisions.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F59C9852498C296004C5FC3 /* Decisions.mp3 */; };
 		FF2EBBEC24932C8500B89189 /* MessageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBEB24932C8500B89189 /* MessageCollectionView.swift */; };
 		FF2EBBEE2493CA4C00B89189 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBED2493CA4C00B89189 /* GameManager.swift */; };
 		FF2EBBF32493D55D00B89189 /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EBBF22493D55D00B89189 /* OptionButton.swift */; };
@@ -45,6 +47,8 @@
 		4F59C97D2497DB44004C5FC3 /* VideoSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSplashViewController.swift; sourceTree = "<group>"; };
 		4F59C97F2497DB63004C5FC3 /* VideoCutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCutter.swift; sourceTree = "<group>"; };
 		4F59C9812497DE6E004C5FC3 /* MysteryHackGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MysteryHackGif.gif; sourceTree = "<group>"; };
+		4F59C9832498BF51004C5FC3 /* Nervous Piano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Nervous Piano.mp3"; sourceTree = "<group>"; };
+		4F59C9852498C296004C5FC3 /* Decisions.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Decisions.mp3; sourceTree = "<group>"; };
 		FF2EBBEB24932C8500B89189 /* MessageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionView.swift; sourceTree = "<group>"; };
 		FF2EBBED2493CA4C00B89189 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		FF2EBBF22493D55D00B89189 /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 				FFE40E032492271C006F1C64 /* Views */,
 				FFE40E0124922719006F1C64 /* Controllers */,
 				FFE40E0024922716006F1C64 /* Utils */,
+				4F59C9832498BF51004C5FC3 /* Nervous Piano.mp3 */,
+				4F59C9852498C296004C5FC3 /* Decisions.mp3 */,
 				4F59C9812497DE6E004C5FC3 /* MysteryHackGif.gif */,
 				4F59C92B24921DAB004C5FC3 /* AppDelegate.swift */,
 				4F59C92D24921DAB004C5FC3 /* SceneDelegate.swift */,
@@ -218,9 +224,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F59C9862498C296004C5FC3 /* Decisions.mp3 in Resources */,
 				4F59C9822497DE6E004C5FC3 /* MysteryHackGif.gif in Resources */,
 				4F59C93824921DAC004C5FC3 /* LaunchScreen.storyboard in Resources */,
 				4F59C93524921DAC004C5FC3 /* Assets.xcassets in Resources */,
+				4F59C9842498BF51004C5FC3 /* Nervous Piano.mp3 in Resources */,
 				4F59C93324921DAB004C5FC3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

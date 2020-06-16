@@ -6,6 +6,7 @@
 //  Copyright © 2020 Apple Developer Academy. All rights reserved.
 //
 
+import AVFoundation
 import Foundation
 import UIKit
 
@@ -90,6 +91,7 @@ public class PrefixGameSceneViewController: UIViewController {
     }()
     
     public weak var delegate: PrefixGameSceneViewControllerDelegate?
+    private var audioPlayer: AVAudioPlayer?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +106,11 @@ public class PrefixGameSceneViewController: UIViewController {
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.setupViewWillDisappear()
+    }
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.setupViewDidDisappear()
     }
     
     @objc private func onCloseImageViewTapped(_ sender: UIImageView) {
@@ -127,6 +134,15 @@ public class PrefixGameSceneViewController: UIViewController {
         self.playGameStoryButton.layer.cornerRadius = playGameStoryButtonCorner
         self.posterImageView.image = gif
         self.descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc augue ipsum, gravida sed molestie at, porttitor ac nunc. Donec aliquet maximus consectetur. Praesent eget hendrerit nisl. Praesent euismod mi quis erat fermentum, at tempus metus rhoncus. Praesent viverra turpis hendrerit, porta nunc in, placerat odio. Fusce eget tortor dolor. Maecenas id venenatis massa. Etiam leo velit, dictum et ornare non, consequat id mi. Nullam ac rhoncus arcu, vel convallis libero. Etiam scelerisque suscipit nisl at dictum. Duis libero sem, elementum volutpat neque sed, accumsan tincidunt lacus. Aliquam finibus orci quis eros molestie, in faucibus nisl fermentum. Morbi ultricies, neque ut dapibus dignissim, felis nulla iaculis quam, at vulputate nulla ex ac tellus. Aliquam posuere magna eget metus fringilla sagittis.\n\nAenean semper nulla sed leo maximus euismod ac id turpis. Nam eu mi tellus. Mauris rutrum, ex nec vestibulum pharetra, ex erat euismod risus, in tristique justo eros et justo. Nunc venenatis, purus finibus facilisis malesuada, urna augue ullamcorper elit, rhoncus mollis velit sem quis massa. In vehicula dolor quis nisi iaculis tristique. Proin et libero sit amet orci faucibus consectetur in eu dui. Vestibulum ipsum nulla, eleifend et mi nec, rhoncus viverra nisl. Sed facilisis tempus arcu, a tincidunt turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+        guard let bundle = Bundle.main.path(forResource: "Decisions", ofType: "mp3") else { return }
+        let url = URL(fileURLWithPath: bundle)
+        do {
+            self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+            self.audioPlayer?.prepareToPlay()
+            self.audioPlayer?.play()
+        } catch let error {
+            debugPrint("PrefixGameSceneViewController: \(error.localizedDescription)")
+        }
     }
     
     private func setupViewWillAppear() {
@@ -135,6 +151,12 @@ public class PrefixGameSceneViewController: UIViewController {
     }
     
     private func setupViewWillDisappear() {
+    }
+    
+    private func setupViewDidDisappear() {
+        if let audioPlayer = self.audioPlayer, audioPlayer.isPlaying {
+            audioPlayer.stop()
+        }
     }
     
     private func implementComponentView() {

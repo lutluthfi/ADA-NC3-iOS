@@ -12,7 +12,6 @@ class GameSceneViewController: UIViewController {
     
     // MARK: - Properties
     private var messageCollectionView: MessageCollectionView!
-    private let userOptionsView = OptionsStackView()
     private var gm = GameManager.shared
     private var gameStory = [StoryModel]() {
         willSet {
@@ -21,10 +20,23 @@ class GameSceneViewController: UIViewController {
             }
         }
     }
+    private let optionsView = OptionsView()
+    private let titleView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
+        
+        let imageView = UIImageView(image: UIImage(systemName: "person.3.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.lightGray))
+        view.addSubview(imageView)
+        imageView.setSize(width: 60, height: 28)
+        imageView.setCenterXYAnchor(in: view)
+        
+        return view
+    }()
+
     
     // MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavbar()
         gameStory = gm.getCurrentStories()
         configureUI()
     }
@@ -42,18 +54,17 @@ class GameSceneViewController: UIViewController {
     
     // MARK: - Helper
     private func configureUI() {
-        self.hideNavbar()
         view.backgroundColor = .bgColor
         configureOptionsView()
         configureMessageCV()
+        configureOptions()
+
     }
     
     private func configureOptionsView() {
-        view.addSubview(userOptionsView)
-        userOptionsView.setAnchor(right: view.rightAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, left: view.leftAnchor, paddingRight: 10, paddingBottom: 10, paddingLeft: 10)
-        userOptionsView.setSize(height: 180)
-        configureOptionCells()
-        
+        self.view.addSubview(optionsView)
+        optionsView.delegate = self
+        optionsView.frame = CGRect(x: 0, y: self.view.frame.height - 100, width: self.view.frame.width, height: 100)
     }
     
     private func configureMessageCV() {
@@ -64,23 +75,21 @@ class GameSceneViewController: UIViewController {
         
         messageCollectionView.delegate = self
         messageCollectionView.dataSource = self
-        
         view.addSubview(messageCollectionView)
-        messageCollectionView.setAnchor(top: view.topAnchor, right: view.rightAnchor, bottom: userOptionsView.topAnchor, left: view.leftAnchor, paddingTop: 45, paddingBottom: 30)
+        messageCollectionView.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height - 230)
     }
     
-    private func configureOptionCells() {
-        userOptionsView.subviews.forEach { (subview) in
-            subview.removeFromSuperview()
-        }
-        guard let options = gameStory.last?.options else {return}
-        options.forEach { (opt) in
-            let optionButton = OptionButton(type: .system)
-            optionButton.optionTitle = opt.title
-            optionButton.nextStoryIndex = opt.direction
-            optionButton.delegate = self
-            
-            userOptionsView.addArrangedSubview(optionButton)
+    private func configureOptions() {
+        if let options = gameStory.last?.options {
+            var optButtons = [OptionButton]()
+            options.forEach { (option) in
+                let optionButton = OptionButton(type: .system)
+                optionButton.optionTitle = option.title
+                optionButton.nextStoryIndex = option.direction
+                optionButton.delegate = self
+                optButtons.append(optionButton)
+            }
+            optionsView.optionButtons = optButtons
         }
     }
     
@@ -88,11 +97,31 @@ class GameSceneViewController: UIViewController {
         if !gameStory.isEmpty, let nextStory = gm.updateNextStory(from: story){
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                 self.gameStory.append(nextStory)
-                self.configureOptionCells()
+                self.configureOptions()
                 self.messageCollectionView.reloadData()
-                self.messageCollectionView.scrollToItem(at: IndexPath(row: self.gameStory.count - 1, section: 0), at: .centeredVertically, animated: true)
+                self.messageCollectionView.scrollToItem(at: IndexPath(row: self.gameStory.count - 1, section: 0), at: .bottom, animated: true)
             }
         }
+    }
+    
+    private func getCellsHeight() -> CGFloat {
+        var cellsHeight: CGFloat = 0
+        self.messageCollectionView.subviews.forEach { (subview) in
+            cellsHeight += subview.frame.height
+        }
+        return cellsHeight
+    }
+    
+    private func configureNavbar() {
+        navigationItem.titleView = titleView
+    
+        let topLeftButton = UIBarButtonItem(title: "Exit", style: .plain, target: self, action: #selector(topLeftButtonHandler))
+        navigationItem.setLeftBarButton(topLeftButton, animated: true)
+    }
+    
+    // MARK: - Targets
+    @objc private func topLeftButtonHandler() {
+        print("DEBUG : EXIT")
     }
 
 }
@@ -140,6 +169,38 @@ extension GameSceneViewController: UICollectionViewDelegate, UICollectionViewDat
     
 }
 
+// MARK: - Option View Delegate
+extension GameSceneViewController: OptionsViewDelegate {
+    
+    func didSelectTextFieldForOpen() {
+        configureOptions()
+        optionsView.textFieldIsOpened = true
+        UIView.animate(withDuration: 0.35) {
+            self.optionsView.frame.origin.y -= 300
+            self.optionsView.frame = CGRect(x: 0, y: self.view.frame.height - 300, width: self.view.frame.width, height: 300)
+            self.messageCollectionView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height - 380)
+            if self.getCellsHeight() > (self.view.frame.height - self.optionsView.frame.height) {
+                self.messageCollectionView.frame = self.view.frame.offsetBy(dx: 0, dy: -310)
+            }
+
+        }
+       
+       
+    }
+    
+    func didSelectTextFieldForDismiss() {
+        
+        optionsView.textFieldIsOpened = false
+        UIView.animate(withDuration: 0.35) {
+            self.optionsView.frame.origin.y += 300
+            self.optionsView.frame = CGRect(x: 0, y: self.view.frame.height - 100, width: self.view.frame.width, height: 100)
+            self.messageCollectionView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height - 230)
+        }
+       
+    }
+
+}
+
 
 // MARK: - Option Button Delegate
 extension GameSceneViewController: OptionButtonDelegate {
@@ -147,7 +208,7 @@ extension GameSceneViewController: OptionButtonDelegate {
     func didSelectButton(nextIndex: Int) {
         let nextStory = gm.setCurrentStories(selectedOptionIndex: nextIndex)
         gameStory.append(nextStory)
-        configureOptionCells()
+        configureOptions()
         messageCollectionView.reloadData()
         messageCollectionView.scrollToItem(at: IndexPath(row: self.gameStory.count - 1, section: 0), at: .centeredVertically, animated: true)
     }
